@@ -133,6 +133,9 @@
     jetbrains.rider
     jetbrains.goland
     dotnetCorePackages.sdk_8_0_3xx 
+    typst
+    tinymist # typst lsp
+    zathura # document viewer
   ];
 
   programs.steam = {
