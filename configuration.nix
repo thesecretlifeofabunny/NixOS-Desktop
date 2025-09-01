@@ -10,16 +10,6 @@
       ./hardware-configuration.nix
     ];
 
-  # Enable Flakes
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-  # enable COSMIC with
-  services.desktopManager.cosmic.enable = true;
-  services.displayManager.cosmic-greeter.enable = true;
-
-  # Clipboard Manager not working Fix
-  environment.sessionVariables.COSMIC_DATA_CONTROL_ENABLED = 1;
-
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -55,6 +45,13 @@
 
   # Enable the X11 windowing system.
   # services.xserver.enable = true;
+
+  # Enable Niri
+  programs.niri.enable = true;
+
+  security.polkit.enable = true; # polkit
+  services.gnome.gnome-keyring.enable = true; # secret service
+  security.pam.services.swaylock = {};
 
   # enable xWayland
   programs.xwayland.enable = true;
@@ -100,7 +97,13 @@
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
+    xwayland-satellite
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
+    alacritty
+    fuzzel # Application launcher recommended for niri
+    swaylock # lockscreen
+    mako # notification daemon
+    swww # wallpaper manager
     git
     wget
     helix
