@@ -54,24 +54,13 @@
   services.gnome.gnome-keyring.enable = true; # secret service
   security.pam.services.swaylock = {};
 
-  # enable xWayland
-  programs.xwayland.enable = true;
-
   # Enable the login manager
   services.displayManager.cosmic-greeter.enable = true;
-  # Enable the COSMIC DE itself
-  services.desktopManager.cosmic.enable = true;
-  # Enable XWayland support in COSMIC
-  services.desktopManager.cosmic.xwayland.enable = true;
-  # Clipboard Manager not working Fix
-  environment.sessionVariables.COSMIC_DATA_CONTROL_ENABLED = 1;
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
 
   # Enable sound.
-  # services.pulseaudio.enable = true;
-  # OR
   services.pipewire = {
     enable = true;
     pulse.enable = true;
@@ -90,7 +79,13 @@
   };
 
   programs.firefox.enable = true;
- 
+
+  fonts.packages = with pkgs; [
+    nerd-fonts.fira-code
+    nerd-fonts.droid-sans-mono
+    font-awesome
+  ];
+
   # enable unfree packages
   nixpkgs.config.allowUnfree = true;
 
@@ -98,7 +93,6 @@
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
     waybar
-    xwayland
     xwayland-satellite
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     alacritty
@@ -106,6 +100,7 @@
     swaylock # lockscreen
     mako # notification daemon
     swww # wallpaper manager
+    nautilus # niri preferred file picker
     git
     wget
     helix
@@ -120,6 +115,7 @@
     fastfetch
     spotify
     _1password-gui
+    onlyoffice-bin # Libre office alternative
     rclone
     rsync
     mpv
