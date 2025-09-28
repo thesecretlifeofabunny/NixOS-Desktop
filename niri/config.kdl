@@ -328,14 +328,25 @@ window-rule {
     // - host Firefox (app-id is "firefox")
     // - Flatpak Firefox (app-id is "org.mozilla.firefox")
     match app-id=r#"firefox$"# title="^Picture-in-Picture$"
-    block-out-from "screencast"
     open-floating true
 }
 
-// block froms screencast
+window-rule {
+    match app-id="[dD]iscord$"
+    match app-id="[vV]esktop$"
+    match app-id="[sS]potify$"
+
+    opacity 0.85
+}
+
+// block froms screencapture
 window-rule {
     match app-id=r"1_*[pP]assword"
     match app-id="firefox$"
+    match app-id="[dD]iscord$"
+    match app-id="[vV]esktop$"
+    match app-id="[fF]ractal$"
+
     block-out-from "screen-capture"
 }
 
