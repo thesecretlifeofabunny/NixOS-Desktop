@@ -125,6 +125,7 @@
     lldb # llvm debugger
     go
     gopls # go lsp
+    golangci-lint-langserver
     delve # go debugger
     omnisharp-roslyn # dotnet lsp
     netcoredbg # dotnet debugger
@@ -138,6 +139,7 @@
     typst
     tinymist # typst lsp
     zathura # document viewer
+    mangohud # game metrics overlay
   ];
 
   programs.steam = {
@@ -145,24 +147,8 @@
     gamescopeSession.enable = true;
   };
  
-  programs.steam.package = pkgs.steam.override {
-   extraPkgs = pkgs': with pkgs'; [
-      xorg.libXcursor
-      xorg.libXi
-      xorg.libXinerama
-      xorg.libXScrnSaver
-      libpng
-      libpulseaudio
-      libvorbis
-      stdenv.cc.cc.lib # Provides libstdc++.so.6
-      libkrb5
-      keyutils
-    ];
-  };
-
   programs.gamescope = {
     enable = true;
-    capSysNice = true;
   };
 
   # Some programs need SUID wrappers, can be configured further or are
