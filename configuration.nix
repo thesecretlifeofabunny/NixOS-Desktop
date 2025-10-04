@@ -55,7 +55,7 @@
   security.pam.services.swaylock = {};
 
   # Enable the login manager
-  services.displayManager.cosmic-greeter.enable = true;
+  services.displayManager.ly.enable = true;
 
   # Enable CUPS to print documents.
   # services.printing.enable = true;
@@ -113,6 +113,7 @@
     yazi # terminal file browser
     vesktop
     fractal
+    protonmail-desktop
     fastfetch
     spotify
     _1password-gui
@@ -140,6 +141,7 @@
     tinymist # typst lsp
     zathura # document viewer
     mangohud # game metrics overlay
+    prismlauncher
   ];
 
   programs.steam = {
